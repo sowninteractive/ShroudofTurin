@@ -29,15 +29,22 @@ pnpm build      # Build for production (outputs to dist/)
 pnpm preview    # Preview the production build locally
 ```
 
-## Deployment (GitHub Pages)
+## Editing the Content
 
-1. Push this project to a GitHub repository's `main` branch.
-2. In the repo, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
-3. The workflow in `.github/workflows/deploy.yml` builds and deploys automatically on every push to `main`.
+All evidence entries live in `src/data/evidence.ts`. Each entry can include a `sourceUrl` (the main source link), optional `relatedLinks`, and an optional `contestedNote` that appears as a "Scholarly context" box on the card. The category counts and the entry numbers on the page update automatically.
 
-The site will be live at `https://<username>.github.io/<repo-name>/`.
+## Publishing to GitHub Pages (simple steps)
 
-The build uses relative asset paths and hash-based routing, so it works under any repository name or a custom domain without extra configuration.
+Your site address will be: **https://sowninteractive.github.io/ShroudofTurin/**
+
+1. **Create the repository.** On GitHub (signed in as `SownInteractive`), click **New repository**. Name it exactly `ShroudofTurin`, keep it **Public**, and do not add a README. Click **Create repository**.
+2. **Upload the files.** Unzip this project. The easiest way is [GitHub Desktop](https://desktop.github.com/): choose *Add local repository* (or *Create new repository*) pointing at the unzipped folder, then **Commit to main** and **Publish repository**. This includes the hidden `.github` folder that does the deploying. If you use the website's *Upload files* button instead, make sure the `.github/workflows/deploy.yml` file ends up in the repo.
+3. **Turn on Pages.** In the repo, go to **Settings → Pages**, and under **Build and deployment**, set **Source** to **GitHub Actions**.
+4. **Wait about two minutes.** Open the **Actions** tab and watch the *Deploy to GitHub Pages* run turn green. Your site is then live at the address above. If step 3 was done after the first run, click the run and choose **Re-run all jobs**.
+
+After that, every time you push changes to `main`, the site updates itself.
+
+To preview locally first: `pnpm install` then `pnpm dev`.
 
 ## License
 
