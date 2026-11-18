@@ -1,0 +1,7 @@
+# Allow the install scripts these packages need (read by pnpm 10 and newer).
+onlyBuiltDependencies:
+  - esbuild
+  - "@swc/core"
+allowBuilds:
+  esbuild: true
+  "@swc/core": true
