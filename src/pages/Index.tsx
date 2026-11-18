@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
 
-// 38 rigorous lines of evidence faithful to the original research compendium
+// Evidence points, grouped into thematic categories
 export interface EvidencePoint {
   num: number;
   title: string;
@@ -13,10 +13,13 @@ export interface EvidencePoint {
   source: string;
   sourceUrl?: string;
   highlightTag?: string;
+  sourceLabel?: string;
+  contestedNote?: string;
+  relatedLinks?: { label: string; url: string }[];
 }
 
 export const evidenceList: EvidencePoint[] = [
-  // SECTION 1: PHYSICAL, TEXTILE & 3D OPTICS
+  // SECTION: PHYSICAL, TEXTILE & 3D OPTICS
   {
     num: 1,
     title: "Physical Dimensions & Ancient 3:1 Herringbone Weave",
@@ -27,7 +30,9 @@ export const evidenceList: EvidencePoint[] = [
     detail:
       "The Shroud of Turin is an ancient linen cloth measuring approximately 4.4 meters long and 1.1 meters wide (corresponding to 8 × 2 ancient Syrian cubits). Woven in a sophisticated 3:1 herringbone twill from hand-spun flax with a Z-twist, it carries faint sepia frontal and dorsal images of a brutally crucified man. The textile displays historical stitching matching 1st-century Masada fabric specimens rather than medieval European looms.",
     source: "Shroud.com, STURP Scientific Records & Textile Archaeology",
-    sourceUrl: "https://www.shroud.com"
+    sourceUrl: "https://shroud.com/78papers.htm",
+    sourceLabel: "STURP Papers Index",
+    relatedLinks: [{ label: "2026 textile analysis (npj Heritage Science)", url: "https://www.nature.com/articles/s40494-026-02530-7" }]
   },
   {
     num: 2,
@@ -39,7 +44,8 @@ export const evidenceList: EvidencePoint[] = [
     detail:
       "In May 1898, Italian photographer Secondo Pia photographed the Shroud during a public exposition. In his darkroom developer, the glass plate negative revealed a startling lifelike positive portrait with natural lighting, anatomical depth, and photographic perfection. The cloth itself functions optically as a photographic negative produced centuries before optics, camera obscura, or photo-chemistry were conceived.",
     source: "Secondo Pia Archives & Shroud.com",
-    sourceUrl: "https://www.shroud.com"
+    sourceUrl: "https://en.wikipedia.org/wiki/Shroud_of_Turin",
+    sourceLabel: "Read Background Overview"
   },
   {
     num: 3,
@@ -51,7 +57,8 @@ export const evidenceList: EvidencePoint[] = [
     detail:
       "Scientists John Jackson, Eric Jumper, and William Ercoline examined the Shroud using a NASA VP-8 Image Analyzer. Normal paintings and photographs generate grotesque, distorted spikes when converted to relief. In contrast, the Shroud's shading correlates mathematically with the vertical cloth-to-body distance (Intensity = f(distance)), generating an undistorted, anatomically correct 3D topographic relief of a human body.",
     source: "Jackson, J. P., Jumper, E. J., and Ercoline, W. R. (1984), Applied Optics 23: 2244–2270",
-    sourceUrl: "https://www.shroud.com"
+    sourceUrl: "https://shroud.com/78papers.htm",
+    sourceLabel: "Find Paper in STURP Index"
   },
   {
     num: 4,
@@ -63,7 +70,8 @@ export const evidenceList: EvidencePoint[] = [
     detail:
       "Electron microscopy demonstrated that the sepia coloration is strictly confined to the outermost primary cell wall of linen fibrils—a skin only 0.2 to 0.5 micrometers thick. The interior core of the thread remains pure white linen. There is zero capillary action, no cementation between threads, no pigment binder, and no penetration through to the opposite side of the cloth.",
     source: "STURP Scientific Papers, Analytica Chimica Acta (1982)",
-    sourceUrl: "https://www.shroud.com"
+    sourceUrl: "https://shroud.com/78papers.htm",
+    sourceLabel: "Find Paper in STURP Index"
   },
   {
     num: 5,
@@ -75,12 +83,26 @@ export const evidenceList: EvidencePoint[] = [
     detail:
       "The Shroud of Turin Research Project (STURP) team spent 120 continuous hours directly examining the relic using UV/visible spectroscopy, X-ray fluorescence, thermography, infrared radiography, and microchemistry. Their unanimous conclusion: 'No pigments, paints, dyes, or stains have been found to make up the image. The image is an ongoing mystery.'",
     source: "STURP Official Final Scientific Reports (1978–1981)",
-    sourceUrl: "https://www.shroud.com"
+    sourceUrl: "https://shroud.com/78papers.htm",
+    sourceLabel: "STURP Papers Index"
   },
-
-  // SECTION 2: BIOCHEMISTRY & SEROLOGY
   {
     num: 6,
+    title: "Atypical Textile Construction Reported in 2026 Fragment Analysis",
+    categoryGroup: "Optics & Physical Properties",
+    categoryLabel: "Textile Analysis",
+    highlightTag: "2026 npj Heritage Science",
+    summary: "A 2026 peer-reviewed textile analysis of fragments retained from the 1988 sampling describes the Shroud's combination of 3/1 twill, z-twist yarn and thread density as highly atypical.",
+    detail:
+      "In 2026, Rachel Freer-Waters and A. J. Timothy Jull published a textile analysis of two fragments retained from the 1988 sampling at the University of Arizona, comparing them with control cloths distributed to the radiocarbon laboratories. They found the fragments consistent with other published descriptions of the main Shroud cloth, and described the combination of warp and weft density, z-twist yarn and 3/1 twill structure as highly atypical and worthy of further study.",
+    contestedNote: "The same paper reports no evidence of contamination in the dated fragments, which bears against the repair hypothesis discussed in the radiocarbon-challenge entry. Atypical construction by itself does not establish the cloth's date.",
+    source: "Freer-Waters, R. & Jull, A. J. T. (2026), npj Heritage Science 14: 263",
+    sourceUrl: "https://www.nature.com/articles/s40494-026-02530-7",
+    sourceLabel: "Read 2026 Study"
+  },
+  // SECTION: BIOCHEMISTRY & SEROLOGY
+  {
+    num: 7,
     title: "Real Human Hemoglobin, Albumin & Bilirubin",
     categoryGroup: "Blood & Forensic Pathology",
     categoryLabel: "Biochemistry & Serology",
@@ -89,10 +111,11 @@ export const evidenceList: EvidencePoint[] = [
     detail:
       "Biochemists John Heller and Alan Adler proved the stains were genuine human blood. Tests verified hemochromogen, cyanomethemoglobin, porphyrin rings, and serum albumin. Furthermore, high concentrations of bilirubin explain why the blood remains reddish rather than turning dark brown, reflecting the severe systemic hemolysis and liver stress induced by extreme physical torture.",
     source: "Heller, J. H., and Adler, A. D. (1980), Applied Optics 19(16): 2742–2744",
-    sourceUrl: "https://www.shroud.com"
+    sourceUrl: "https://www.shroud.com/pdfs/ssi43part2.pdf",
+    sourceLabel: "Read Heller & Adler (1980)"
   },
   {
-    num: 7,
+    num: 8,
     title: "Bloodstains Preceded Image Formation (Natural Masking)",
     categoryGroup: "Blood & Forensic Pathology",
     categoryLabel: "Spectroscopy & Layering",
@@ -101,10 +124,12 @@ export const evidenceList: EvidencePoint[] = [
     detail:
       "When blood crusts are digested with proteolytic enzymes, the linen fibrils beneath are completely uncolored and pristine. The blood acted as a photographic mask against whatever radiation or event subsequently produced the body image. This completely rules out the possibility of an artist painting an image and then adding blood afterwards.",
     source: "Pellicori, R. (1980), Applied Optics 19(12): 1913–1920",
-    sourceUrl: "https://www.shroud.com"
+    sourceUrl: "https://shroud.com/78papers.htm",
+    sourceLabel: "Find Paper in STURP Index",
+    relatedLinks: [{ label: "Jumper et al. (1984), stains and images", url: "https://shroud.com/pdfs/Comprehensive%20Exam%20of%20Stains%20Jumper%20et%20al%201984%20OCR.pdf" }]
   },
   {
-    num: 8,
+    num: 9,
     title: "Roman Flagrum Scourge Marks (Dual Executioners)",
     categoryGroup: "Blood & Forensic Pathology",
     categoryLabel: "Forensic Trauma",
@@ -113,10 +138,12 @@ export const evidenceList: EvidencePoint[] = [
     detail:
       "Forensic pathologists identified 100 to 120 dumbbell-shaped contusions distributed across the shoulders, back, chest, and legs. Each mark matches the paired lead dumbbell weights (plumbatae) of a Roman flagrum taxillatum. Trajectory modeling shows two executioners standing on either side of the victim, one taller than the other, striking with systematic brutality.",
     scripture: "Matthew 27:26; Mark 15:15; John 19:1",
-    source: "STURP Scientific Papers & 2023 Forensic Bloodstain-Pattern Research"
+    source: "STURP Scientific Papers & 2023 Forensic Bloodstain-Pattern Research",
+    sourceUrl: "https://shroud.com/78papers.htm",
+    sourceLabel: "STURP Papers Index"
   },
   {
-    num: 9,
+    num: 10,
     title: "Scalp & Forehead Puncture Wounds (Helmet of Thorns)",
     categoryGroup: "Blood & Forensic Pathology",
     categoryLabel: "Cranial Forensics",
@@ -125,10 +152,12 @@ export const evidenceList: EvidencePoint[] = [
     detail:
       "The head exhibits over 30 separate puncture wounds across the scalp, forehead, and occiput, consistent with a cap or helmet of thorns rather than a decorative wreath. A prominent arterial blood rivulet on the forehead flows down in the shape of an inverted '3', perfectly conforming to the natural skin creases produced when brow muscles contract in severe pain.",
     scripture: "Matthew 27:29; Mark 15:17; John 19:2",
-    source: "STURP Forensic Papers & Legal Medicine Annual"
+    source: "STURP Forensic Papers & Legal Medicine Annual",
+    sourceUrl: "https://shroud.com/78papers.htm",
+    sourceLabel: "STURP Papers Index"
   },
   {
-    num: 10,
+    num: 11,
     title: "Destot's Space Wrist Nailing & Median Nerve Retraction",
     categoryGroup: "Blood & Forensic Pathology",
     categoryLabel: "Biomechanics & Anatomy",
@@ -136,10 +165,12 @@ export const evidenceList: EvidencePoint[] = [
     summary: "Nails driven through Destot's space in the wrist (not the palm), severing the median nerve and causing involuntary thumb retraction.",
     detail:
       "Medieval art universally depicted nails through the palms of the hands—an anatomical impossibility, as palm tissue tears under body weight. The Shroud reveals nail entry through Destot's space in the wrists. Furthermore, both thumbs are retracted inwards beneath the palms, an involuntary reflex caused when the heavy iron spike lacerates the motor branch of the median nerve.",
-    source: "Barbet, P. (1953) A Doctor at Calvary & Zugibe, F. (2005)"
+    source: "Barbet, P. (1953) A Doctor at Calvary & Zugibe, F. (2005)",
+    sourceUrl: "https://pubmed.ncbi.nlm.nih.gov/3512867/",
+    sourceLabel: "Medical Background (JAMA, 1986)"
   },
   {
-    num: 11,
+    num: 12,
     title: "Crucifixion Foot Nail Exit & Asphyxial Posture",
     categoryGroup: "Blood & Forensic Pathology",
     categoryLabel: "Forensic Pathology",
@@ -148,10 +179,12 @@ export const evidenceList: EvidencePoint[] = [
     detail:
       "The lower dorsal and frontal images show an exit wound from an iron spike through the tarsus of the feet. Blood runoff angles demonstrate that the victim had to repeatedly push upward against the foot nail to exhale and relieve asphyxiation, matching the horrific clinical physiology of Roman crucifixion.",
     scripture: "Matthew 27:35; Luke 23:33; John 19:18",
-    source: "Forensic Pathology Archives & Zugibe Anatomical Studies"
+    source: "Forensic Pathology Archives & Zugibe Anatomical Studies",
+    sourceUrl: "https://pubmed.ncbi.nlm.nih.gov/3512867/",
+    sourceLabel: "Medical Background (JAMA, 1986)"
   },
   {
-    num: 12,
+    num: 13,
     title: "The Postmortem Side Lance Wound & Serous Effusion",
     categoryGroup: "Blood & Forensic Pathology",
     categoryLabel: "Forensic Pathology",
@@ -160,10 +193,12 @@ export const evidenceList: EvidencePoint[] = [
     detail:
       "A transverse oval wound measuring 4.4 × 1.1 cm appears on the right chest between the fifth and sixth ribs, exactly conforming to the dimensions of a Roman lancea. A massive outflow of separated heavy clotted blood and clear serous fluid (pleural and pericardial fluid) drained downwards across the chest and back—the clinical reality of 'blood and water.'",
     scripture: "John 19:34",
-    source: "STURP Medical Studies & Journal of the American Medical Association (JAMA)"
+    source: "STURP Medical Studies & Journal of the American Medical Association (JAMA)",
+    sourceUrl: "https://pubmed.ncbi.nlm.nih.gov/3512867/",
+    sourceLabel: "Read JAMA Article (PubMed)"
   },
   {
-    num: 13,
+    num: 14,
     title: "Rigid Postmortem Rigor Mortis Frozen at Death",
     categoryGroup: "Blood & Forensic Pathology",
     categoryLabel: "Forensic Pathology",
@@ -171,110 +206,177 @@ export const evidenceList: EvidencePoint[] = [
     summary: "Thoracic cage expansion, neck tilt, and stiff knee flexion preserved without bodily decomposition or putrefaction gases.",
     detail:
       "The anatomical imprint demonstrates unmistakable signs of acute rigor mortis setting in instantly at the moment of violent asphyxial death. The rib cage is frozen in full inspiratory distension, and the knees remain slightly flexed. Most crucially, there are zero signs of body decomposition or bacterial putrefaction, indicating the body departed the cloth within approximately 36 to 40 hours.",
-    source: "STURP Forensic Papers & Forensic Science International"
+    source: "STURP Forensic Papers & Forensic Science International",
+    sourceUrl: "https://shroud.com/78papers.htm",
+    sourceLabel: "STURP Papers Index"
   },
-
-  // SECTION 3: MODERN LASER PHYSICS & ATOMIC DATING
-  {
-    num: 14,
-    title: "ENEA Vacuum Ultraviolet Excimer Laser Breakthrough",
-    categoryGroup: "Modern Laser Physics & Dating",
-    categoryLabel: "Quantum Laser Physics",
-    highlightTag: "ENEA Laser Replication",
-    summary: "Italian state scientists discovered that only ultra-short vacuum UV laser bursts could duplicate the sub-micron coloration depth.",
-    detail:
-      "Physicists at Italy's National Agency for New Technologies (ENEA) spent five years attempting to duplicate the Shroud's image color. They proved that no thermal, chemical, or photographic method works. Only ultra-short, nanosecond pulses of vacuum ultraviolet (VUV) radiation from excimer lasers can recreate the exact sub-micron surface yellowing without scorch or heat damage.",
-    source: "ENEA Laboratory Research (2008 & 2012), Applied Optics",
-    sourceUrl: "https://www.enea.it/en"
-  },
+  // SECTION: MODERN LASER PHYSICS & ATOMIC DATING
   {
     num: 15,
-    title: "Radiant Energy Requirement: 34 Trillion Watts of Light",
+    title: "ENEA Vacuum-Ultraviolet Laser Experiments on Linen",
     categoryGroup: "Modern Laser Physics & Dating",
     categoryLabel: "Quantum Laser Physics",
-    highlightTag: "34 Trillion Watts",
-    summary: "An instantaneous directional burst of 34,000,000,000,000 watts lasting billionths of a second would be required across the entire cloth.",
+    highlightTag: "ENEA Laser Experiments",
+    summary: "ENEA researchers reproduced the Shroud's ultra-thin, yellowed coloration on small linen samples using extremely short pulses of vacuum ultraviolet light.",
     detail:
-      "Calculating the energy needed to shade both sides of the 4.4-meter linen cloth simultaneously, ENEA scientists determined that an instantaneous directional light burst of approximately 34 trillion watts lasting mere billionths of a second would be required—a radiant electromagnetic flux exceeding the electrical grid of entire continents.",
-    source: "ENEA Laser Research & Journal of Imaging Science and Technology (2012)",
-    sourceUrl: "https://www.enea.it/en"
+      "Between 2005 and 2013, physicists at ENEA's research centre in Frascati irradiated linen with excimer lasers, varying pulse length, intensity and pulse count. Longer ultraviolet pulses (about 120 ns) failed to colour the cloth or carbonized it, but 193-nm vacuum-ultraviolet pulses lasting about 12 ns produced a faint yellowing confined to the outermost fibre layer, with a hue close to the Shroud image, and only within a narrow window of settings. Lead author Paolo Di Lazzaro stresses that this identifies a physical mechanism able to produce Shroud-like colour, not proof that the image was made by a laser, and that the work does not address when the image formed.",
+    contestedNote: "ENEA coloured only small areas of linen, and only within a narrow range of settings; the full-body image was not reproduced. Di Lazzaro also notes that other processes, such as electrons from a corona discharge, have produced shroud-like coloration at the microscopic level.",
+    source: "Baldacchini, Di Lazzaro, Murra & Fanti (2008), Applied Optics 47(9); Di Lazzaro et al. (2012), Applied Optics 51; Di Lazzaro & Murra (2015), SHS Web of Conferences 15",
+    sourceUrl: "https://www.shs-conferences.org/articles/shsconf/pdf/2015/02/shsconf_atsi2014_00005.pdf",
+    sourceLabel: "Read ENEA Paper (open access)",
+    relatedLinks: [{ label: "National Geographic (2015)", url: "https://www.nationalgeographic.com/history/article/150417-shroud-turin-relics-jesus-catholic-church-religion-science" }]
   },
   {
     num: 16,
-    title: "Wide-Angle X-ray Scattering (WAXS) 2,000-Year Dating",
+    title: "Radiant Energy Requirement: About 34 Trillion Watts of Light",
     categoryGroup: "Modern Laser Physics & Dating",
-    categoryLabel: "Cellulose Crystallography",
-    highlightTag: "2022 WAXS 1st Century Date",
-    summary: "Micro-crystallographic analysis of cellulose degradation by Dr. De Caro proved the cloth is 2,000 years old, matching Masada AD 55–74 linen.",
+    categoryLabel: "Quantum Laser Physics",
+    highlightTag: "3.4 × 10¹³ W",
+    summary: "ENEA's scaling of its lab results to a whole-body image gives a required vacuum-UV flash of roughly 34 trillion watts, beyond any ultraviolet source available today.",
     detail:
-      "In 2022, Dr. Liberato De Caro at the Italian National Research Council (CNR) applied Wide-Angle X-ray Scattering (WAXS) to analyze natural cellulose structural micro-aging. The structural decay of the Shroud's linen fibers closely matched control linen from the fortress of Masada, Israel (dated 55–74 AD), completely refuting the flawed 1988 radiocarbon date from the repaired corner edge.",
-    source: "De Caro, L. et al. (2022), Heritage 5(2): 860–870",
-    sourceUrl: "https://www.mdpi.com/2571-9408/5/2/47"
+      "In the ENEA experiments, Shroud-like colouring appeared only with very short, very intense vacuum-ultraviolet pulses (billions of watts per pulse over a few square centimetres, lasting well under 40 billionths of a second). Scaling those conditions up to colour a surface the size of a human body, front and back, gives an estimated peak power of roughly 34 trillion watts (about 3.4 × 10¹³ W). Di Lazzaro states that this exceeds the maximum power of all ultraviolet sources available today, which is why ENEA concludes no single laser could reproduce the whole image. The figure is a measure of how demanding the image is to replicate, not a demonstration of how it formed.",
+    contestedNote: "The estimate comes from scaling small-area lab results up to a full body, and ENEA stresses it does not show the image was produced by light or a laser. Other researchers favour contact or chemical image-forming processes that would not need such energy.",
+    source: "Di Lazzaro et al., ENEA Frascati report (2011); Di Lazzaro, quoted in National Geographic (2015)",
+    sourceUrl: "https://www.nationalgeographic.com/history/article/150417-shroud-turin-relics-jesus-catholic-church-religion-science",
+    sourceLabel: "Read National Geographic Report",
+    relatedLinks: [{ label: "ENEA research survey (open access)", url: "https://www.shs-conferences.org/articles/shsconf/pdf/2015/02/shsconf_atsi2014_00005.pdf" }, { label: "Sci-News summary", url: "https://www.sci.news/physics/scientists-suggest-turin-shroud-authentic.html" }]
   },
   {
     num: 17,
-    title: "1988 Radiocarbon Corner Sample Flaw & Repair Threads",
+    title: "No Laboratory Has Reproduced the Full-Body Image",
     categoryGroup: "Modern Laser Physics & Dating",
-    categoryLabel: "Radiocarbon Re-Evaluation",
-    highlightTag: "1988 C-14 Debunked",
-    summary: "Peer-reviewed chemistry proved the 1988 C-14 sample was cut from a 16th-century re-woven patch containing cotton and madder dye.",
+    categoryLabel: "Replication Attempts",
+    highlightTag: "Unreplicated",
+    summary: "Even ENEA's best results colour only a few square centimetres, and Di Lazzaro states that every scientific attempt to replicate the full image has failed so far.",
     detail:
-      "Chemist Raymond Rogers of Los Alamos National Laboratory proved that the solitary corner sample clipped in 1988 was non-representative. Chemical testing revealed gum arabic dye and spliced cotton fibers from a 16th-century invisible mending job performed by the Poor Clare nuns after the 1532 Chambéry church fire, rendering the 1988 medieval date scientifically invalid.",
-    source: "Rogers, R. N. (2005), Thermochimica Acta 425: 189–194",
-    sourceUrl: "https://www.shroud.com"
+      "ENEA could approximate the Shroud's colour, thinness and lack of fluorescence only on small linen patches under tightly controlled conditions. In 2015, Paolo Di Lazzaro told National Geographic that every scientific attempt to reproduce the image in a laboratory has failed, and reasoned that if modern technology cannot make a facsimile, a medieval forger succeeding seems hard to imagine. The energy requirement estimated by ENEA is one reason a full-body reproduction remains out of reach.",
+    contestedNote: "Skeptical researchers have produced copies using rubbing and other medieval-style techniques that reproduce some of the Shroud's features, and researchers disagree about how closely such copies match.",
+    source: "Di Lazzaro, quoted in National Geographic (2015); Di Lazzaro & Murra (2015), SHS Web of Conferences 15",
+    sourceUrl: "https://www.nationalgeographic.com/history/article/150417-shroud-turin-relics-jesus-catholic-church-religion-science",
+    sourceLabel: "Read National Geographic Report",
+    relatedLinks: [{ label: "ENEA research survey (open access)", url: "https://www.shs-conferences.org/articles/shsconf/pdf/2015/02/shsconf_atsi2014_00005.pdf" }]
   },
-
-  // SECTION 4: GENOMICS, BOTANY & ARCHAEOLOGY
   {
     num: 18,
-    title: "Mitochondrial DNA Sequencing (Near Eastern Lineages)",
-    categoryGroup: "Genomics & Archaeology",
-    categoryLabel: "Genomics & Lineages",
-    highlightTag: "Nature 2015 DNA Study",
-    summary: "Sequenced mitochondrial DNA isolated from Shroud dust revealed ancient Near Eastern haplogroups alongside Mediterranean plant genomes.",
+    title: "Wide-Angle X-ray Scattering (WAXS) Dating of a Shroud Thread (2022)",
+    categoryGroup: "Modern Laser Physics & Dating",
+    categoryLabel: "Cellulose Crystallography",
+    highlightTag: "2022 WAXS Study",
+    summary: "A 2022 peer-reviewed X-ray study of one thread taken near the 1988 sampling corner found cellulose ageing far older than seven centuries, resembling first-century Masada linen.",
     detail:
-      "A genomic breakthrough published in Nature's Scientific Reports ('Uncovering the Sources of DNA Found on the Turin Shroud') sequenced DNA from vacuumed micro-particles. Analysis identified distinctive Near Eastern and Mediterranean human haplogroups, together with plant chloroplast DNA tracing the cloth's continuous transit from ancient Judaea through Anatolia and Western Europe.",
-    source: "Scientific Reports 5:15635 (Nature Publishing, 2015)",
-    sourceUrl: "https://www.nature.com/articles/srep15635"
+      "In 2022, Liberato De Caro and colleagues at Italy's National Research Council applied Wide-Angle X-ray Scattering to a single thread taken near the corner used for radiocarbon dating. Their analysis of cellulose structural ageing indicated a cloth much older than the roughly seven centuries implied by the 1988 date, with a profile similar to linen from Masada, Israel (55–74 AD). The authors describe the method as new and propose repeating it on more samples from different parts of the cloth in several laboratories.",
+    contestedNote: "The result rests on one thread and a recently developed technique. Independent measurements on additional samples are still needed, as the authors themselves propose.",
+    source: "De Caro, L., Sibillano, T., Lassandro, R., Giannini, C. & Fanti, G. (2022), Heritage 5(2): 860–870",
+    sourceUrl: "https://www.mdpi.com/2571-9408/5/2/47",
+    sourceLabel: "Read Original Study"
   },
   {
     num: 19,
-    title: "Endemic Judean Pollen Grains (Gundelia tournefortii)",
-    categoryGroup: "Genomics & Archaeology",
-    categoryLabel: "Botanical Palynology",
-    highlightTag: "Jerusalem Flora",
-    summary: "Over 50 plant pollen species identified, with high concentrations of spring-blooming Jerusalem flora including Gundelia tournefortii.",
+    title: "Spectroscopic Aging Studies (FTIR & Raman) Point to an Earlier Date",
+    categoryGroup: "Modern Laser Physics & Dating",
+    categoryLabel: "Spectroscopic Dating",
+    highlightTag: "FTIR / Raman",
+    summary: "A research group led by Giulio Fanti reported FTIR and Raman spectroscopy age estimates centred before the Christian era, though with very large error margins.",
     detail:
-      "Palynologist Marzia Boi and Hebrew University botanist Avinoam Danin confirmed abundant fossilized pollen grains adhering to the fibers. Predominant among them is Gundelia tournefortii, a spiny plant native exclusively to the hills around Jerusalem that flowers exclusively in March and April—the exact season of the biblical Passover and Crucifixion.",
-    scripture: "John 19:39–40",
-    source: "Boi, M. (2017), Archaeometry & Danin (1999)"
+      "The introduction to the 2022 WAXS paper summarizes earlier dating attempts by the same group: FTIR/ATR spectroscopy gave an estimate of 300 BC ± 400 years and Raman spectroscopy gave 200 BC ± 500 years, both far from the 1260–1390 AD radiocarbon range. A mechanical-properties approach was also proposed. De Caro's team suggests further measurements by several laboratories on samples from different parts of the cloth to confirm these indications.",
+    contestedNote: "These estimates come from one research group and carry margins of four to five centuries. They have not displaced the 1988 radiocarbon result in mainstream dating.",
+    source: "De Caro, L. et al. (2022), Heritage 5(2): 860–870, introduction and references",
+    sourceUrl: "https://www.mdpi.com/2571-9408/5/2/47",
+    sourceLabel: "Read Original Study"
   },
   {
     num: 20,
+    title: "Challenges to the 1988 Radiocarbon Date: Rogers' Repair Hypothesis",
+    categoryGroup: "Modern Laser Physics & Dating",
+    categoryLabel: "Radiocarbon Re-Evaluation",
+    highlightTag: "1988 C-14 Disputed",
+    summary: "Chemist Raymond Rogers argued the 1988 sample came from a later repair containing cotton and dye; later studies of the retained fragments dispute this.",
+    detail:
+      "Raymond Rogers, a former STURP chemist at Los Alamos, reported in 2005 that threads from the radiocarbon sample area showed cotton fibres and a dye coating not seen elsewhere on the cloth, and concluded the sample was not part of the original linen. From the slow loss of vanillin from the flax lignin he also estimated an age of roughly 1,300 to 3,000 years. Repairs to the Shroud after the 1532 Chambéry fire are documented in 1534 and 1694.",
+    contestedNote: "Rogers' conclusions are disputed. In 2010 Freer-Waters and Jull examined a retained piece of the Arizona sample and found nothing to contradict its coming from the main cloth, attributing stray cotton fibres to possible contamination from handling and storage. A 2026 analysis of two retained fragments likewise reported consistency with the main Shroud and no sign of contamination. The 1988 date (1260–1390 AD) remains the most widely cited scientific result.",
+    source: "Rogers, R. N. (2005), Thermochimica Acta 425: 189–194",
+    sourceUrl: "https://doi.org/10.1016/j.tca.2004.09.029",
+    sourceLabel: "Read Original Study",
+    relatedLinks: [{ label: "Freer-Waters & Jull (2010), Radiocarbon", url: "https://journals.uair.arizona.edu/index.php/radiocarbon/article/download/3419/3757" }, { label: "Freer-Waters & Jull (2026)", url: "https://www.nature.com/articles/s40494-026-02530-7" }, { label: "Nature news analysis (2005)", url: "https://www.nature.com/articles/news050124-17" }]
+  },
+  {
+    num: 21,
+    title: "Statistical Heterogeneity in the 1988 Radiocarbon Raw Data (2019)",
+    categoryGroup: "Modern Laser Physics & Dating",
+    categoryLabel: "Statistical Re-analysis",
+    highlightTag: "Raw Data Re-analysis",
+    summary: "Raw 1988 laboratory data, released only after a legal request, show statistically significant variation between measurements, leading the authors to call for re-dating.",
+    detail:
+      "After the British Museum released the 1988 raw measurements in 2017 in response to a legal request, Tristan Casabianca and colleagues re-examined them in Archaeometry (2019). Applying standard homogeneity tests, they found the Arizona laboratory's measurements were more variable than expected from a uniform piece of cloth, and concluded that the published 1260–1390 AD range cannot be treated as conclusive. They did not propose a replacement date, and recommended new multidisciplinary sampling instead.",
+    contestedNote: "The 1988 result (1260–1390 AD) remains the most widely cited scientific dating of the cloth, and the 2019 authors themselves call for new testing rather than offering a replacement date.",
+    source: "Casabianca, T., Marinelli, E., Pernagallo, G. & Torrisi, B. (2019), Archaeometry 61(5): 1223–1231",
+    sourceUrl: "https://doi.org/10.1111/arcm.12467",
+    sourceLabel: "Read Original Study",
+    relatedLinks: [{ label: "Open-access preprint", url: "https://philarchive.org/archive/CASTRD-3" }, { label: "Original 1988 Nature paper", url: "https://www.nature.com/articles/337611a0" }]
+  },
+  // SECTION: GENOMICS, BOTANY & ARCHAEOLOGY
+  {
+    num: 22,
+    title: "Human & Plant DNA from Shroud Dust (2015 & 2026 Studies)",
+    categoryGroup: "Genomics & Archaeology",
+    categoryLabel: "Genomics & Lineages",
+    highlightTag: "Scientific Reports DNA",
+    summary: "Two Scientific Reports studies recovered DNA from many human lineages and plant species, evidence of long handling and travel rather than a clear date or origin.",
+    detail:
+      "In 2015, Gianni Barcaccia's team sequenced DNA from dust vacuumed off the Shroud and found plant species from the Mediterranean, Asia, the Middle East and the Americas, plus human mitochondrial lineages from several Western Eurasian groups, including some typical of the Near East and India. The authors said this diversity fits the Shroud's long journey from the Near East but does not exclude a medieval European origin, and they even raised the possibility of Indian linen manufacture. A 2026 follow-up applying PCR-free metagenomic sequencing to the official 1978 samples likewise concluded that DNA alone cannot date the cloth.",
+    contestedNote: "Neither study can establish the cloth's age or origin. Reporting on the 2026 study describes the animal and microbial DNA as leaning Mediterranean and European, no ancient proteins were found, and the clearest human profile matched a researcher who handled the 1978 samples.",
+    source: "Barcaccia, G. et al. (2015), Scientific Reports 5:14484; Barcaccia, G. et al. (2026), Scientific Reports 16",
+    sourceUrl: "https://www.nature.com/articles/srep14484",
+    sourceLabel: "Read 2015 Study",
+    relatedLinks: [{ label: "2026 follow-up study", url: "https://doi.org/10.1038/s41598-026-60684-7" }, { label: "Phys.org summary (2026)", url: "https://phys.org/news/2026-07-shroud-turin-dna-biological-history.html" }]
+  },
+  {
+    num: 23,
+    title: "Pollen & Plant Imagery on the Shroud (Frei, Danin, Baruch)",
+    categoryGroup: "Genomics & Archaeology",
+    categoryLabel: "Botanical Palynology",
+    highlightTag: "Disputed Botany",
+    summary: "Max Frei's sticky-tape samples and later work by Avinoam Danin and Uri Baruch were reported to show pollen from Near Eastern plants such as Gundelia tournefortii; the identifications are disputed.",
+    detail:
+      "Swiss criminologist Max Frei collected pollen from the Shroud in 1973 and 1978. Israeli botanist Avinoam Danin and palynologist Uri Baruch later reported that a large share of the grains they examined matched Gundelia tournefortii, a thistle that blooms around Jerusalem in spring, and that some plant images on the cloth pointed to the Jerusalem–Hebron area. In 2017, Marzia Boi published an Archaeometry study offering a different reading, proposing that the pollen mostly comes from insect-pollinated plants such as members of the Asteraceae (rather than Gundelia), Cistus, Ferula and Pistacia, consistent with anointing and embalming.",
+    scripture: "John 19:39–40",
+    contestedNote: "Palynologist Vaughn Bryant, reviewing the Danin and Baruch work, argued that Gundelia cannot be reliably identified by light microscopy alone. Pollen can also arrive by wind, handling or travel, so it speaks to exposure, not to the cloth's age.",
+    source: "Danin, A. & Baruch, U. (1998–1999); Boi, M. (2017), Archaeometry 59(2): 316–330",
+    sourceUrl: "https://www.shroud.com/danin2.htm",
+    sourceLabel: "Read Danin's Paper"
+  },
+  {
+    num: 24,
     title: "Limestone Dust Matching Jerusalem Tombs (Aragonite)",
     categoryGroup: "Genomics & Archaeology",
     categoryLabel: "Archaeological Mineralogy",
     highlightTag: "Jerusalem Rock Aragonite",
-    summary: "Spectroscopy of dirt scraped from the soles of the feet identified rare calcium carbonate matching the unique rock of Damascus Gate tombs.",
+    summary: "Microscopic limestone particles from the Shroud's foot region were reported to be aragonite with traces of strontium and iron, resembling limestone from a Jerusalem tomb.",
     detail:
-      "Optical crystallographer Joseph Kohlbeck and physicist Richard Levi-Setti subjected microscopic dirt samples from the Shroud's soles and knees to secondary ion mass spectrometry. The mineral is a rare form of calcium carbonate (travertine aragonite) with strontium and iron trace signatures that match the limestone of ancient burial grottos outside the Damascus Gate in Jerusalem.",
-    source: "Kohlbeck, J. A. and Nitowski, E. L. (1986), Archaeology"
+      "Optical crystallographer Joseph Kohlbeck and archaeologist Eugenia Nitowski reported that tiny dirt particles taken from the Shroud's foot area were travertine aragonite, a less common form of calcium carbonate, with small amounts of strontium and iron. Their comparison samples from a Jerusalem tomb showed the same signature, and physicist Riccardo Levi-Setti's mass-spectrometry comparison supported the match. They argued that anyone proposing a forgery would need to explain how this material reached the cloth.",
+    contestedNote: "Kohlbeck himself acknowledged that the match is suggestive and does not prove the dirt could only have come from a Jerusalem tomb. The BAS Library article may require a free or paid membership.",
+    source: "Kohlbeck, J. A. & Nitowski, E. L. (1986), Biblical Archaeology Review 12(4): 18–29",
+    sourceUrl: "https://library.biblicalarchaeology.org/article/new-evidence-may-explain-image-on-shroud-of-turin",
+    sourceLabel: "Read Article (BAS Library)"
   },
   {
-    num: 21,
-    title: "Recent 2023–2026 Peer-Reviewed Forensic Corroborations",
+    num: 25,
+    title: "Recent 2025–2026 Peer-Reviewed Research on the Shroud",
     categoryGroup: "Genomics & Archaeology",
-    categoryLabel: "Contemporary Forensic Science",
-    highlightTag: "2023–2026 Studies",
-    summary: "Fluid dynamic BPA and official STURP DNA sample re-examinations continue to confirm anatomical accuracy and Near Eastern origin.",
+    categoryLabel: "Contemporary Research",
+    highlightTag: "2025–2026 Studies",
+    summary: "New studies on DNA, retained 1988 fragments and the sequence of blood and image add data points, but do not settle the cloth's age.",
     detail:
-      "Peer-reviewed studies between 2023 and 2026 in PubMed Central, npj Heritage Science, and Scientific Reports evaluated bloodstain pattern analysis (BPA) under shifting body angles, re-analyzed textile flax retting, and confirmed official 1978 STURP dust samples—consistently affirming the cloth's first-century Near Eastern provenance.",
-    source: "PubMed Central (2023), Scientific Reports (2026), npj Heritage Science"
+      "Recent work includes a 2026 Scientific Reports metagenomic study of the official 1978 samples; an April 2026 npj Heritage Science textile analysis of fragments retained from the 1988 radiocarbon sampling, which found them consistent with the main cloth and called its weave combination highly atypical; and experiments by Kelly Kearse in the International Journal of Archaeology (2025–2026) on how blood and image-forming chemistry interact. One of Kearse's findings is that blood applied to acid-treated linen prevents later coloration, which offers an experimental model for the lack of image beneath the bloodstains.",
+    contestedNote: "These studies refine the picture rather than settle it. As summaries of the 2026 DNA study put it, the findings do not prove the cloth's age or authenticity.",
+    source: "Barcaccia et al. (2026), Scientific Reports 16; Freer-Waters & Jull (2026), npj Heritage Science 14: 263; Kearse (2025–2026), International Journal of Archaeology",
+    sourceUrl: "https://www.nature.com/articles/s40494-026-02530-7",
+    sourceLabel: "Read 2026 Textile Study",
+    relatedLinks: [{ label: "Kearse (2026), blood and image sequence", url: "https://www.sciencepublishinggroup.com/article/10.11648/j.ija.20261402.11" }, { label: "Barcaccia et al. (2026), DNA", url: "https://doi.org/10.1038/s41598-026-60684-7" }]
   },
-
-  // SECTION 5: HISTORICAL TRAIL & THE MANDYLION
+  // SECTION: HISTORICAL TRAIL & THE MANDYLION
   {
-    num: 22,
+    num: 26,
     title: "The Historical Mandylion of Edessa ('Tetradiplon')",
     categoryGroup: "Historical Custody & The Mandylion",
     categoryLabel: "Byzantine Historical Records",
@@ -282,11 +384,13 @@ export const evidenceList: EvidencePoint[] = [
     summary: "6th-century texts record an acheiropoieton cloth folded 'tetradiplon' (in four twice) exposing only the sacred face of Jesus in a frame.",
     detail:
       "Ancient Christian records from the 6th century describe the Image of Edessa (Mandylion) as an 'acheiropoieton' ('not made by human hands') image of Christ on linen. The Acts of Thaddaeus uses the unique Greek word 'tetradiplon' (doubled four times = 8 folds). When the 4.4-meter Shroud is folded in eight layers, only the majestic face of Christ remains visible within a rectangular opening.",
+    contestedNote: "Whether the Mandylion was the Shroud is debated. Most early accounts describe a face-only image, and historians such as Averil Cameron reject the identification.",
     source: "Acts of Thaddaeus & Ian Wilson (1978)",
-    sourceUrl: "https://biblearchaeology.org"
+    sourceUrl: "https://www.shroud.com/pdfs/scavone.pdf",
+    sourceLabel: "Read Scavone's Study"
   },
   {
-    num: 23,
+    num: 27,
     title: "Archdeacon Gregory's 944 AD Constantinople Homily",
     categoryGroup: "Historical Custody & The Mandylion",
     categoryLabel: "Byzantine Homiletics",
@@ -294,21 +398,28 @@ export const evidenceList: EvidencePoint[] = [
     summary: "Archdeacon Gregory delivered an official imperial sermon explicitly describing that the Edessa cloth showed Christ's full body, side wound, and blood.",
     detail:
       "On August 16, 944 AD, the Byzantine Empire brought the holy cloth into Constantinople with imperial pomp. Archdeacon Gregory the Referendarius gave an official sermon (preserved in Vatican Codex Graecus 511) explicitly recording that the cloth was not merely a face portrait, but displayed a full body with blood from a spear wound in the side—identifying the Mandylion as the full Shroud.",
-    source: "Gregory the Referendarius Vatican MS gr. 511 & Dubarle (1997)"
+    contestedNote: "The sermon is widely read as describing the Edessa image, but whether that image was the Shroud is debated (see the Mandylion entry above).",
+    source: "Gregory the Referendarius Vatican MS gr. 511 & Dubarle (1997)",
+    sourceUrl: "https://shroud.com/pdfs/n60part2.pdf",
+    sourceLabel: "Read Gregory's Sermon (Guscin)"
   },
   {
-    num: 24,
+    num: 28,
     title: "1192 AD Hungarian Pray Codex Manuscript",
     categoryGroup: "Historical Custody & The Mandylion",
     categoryLabel: "Artistic Manuscript Evidence",
     highlightTag: "Pray Codex (1192 AD)",
-    summary: "A manuscript predating the 1988 radiocarbon date by centuries shows the exact 3:1 herringbone weave, L-shaped poker burns, and naked burial posture.",
+    summary: "A 12th-century Hungarian manuscript illustration of Christ's burial shows features that proponents compare to the Shroud; historians disagree about whether it depicts it.",
     detail:
-      "The Hungarian Pray Codex, precisely dated to 1192–1195 AD (decades prior to the 1260–1390 radiocarbon window), contains an ink illustration of the burial of Christ. The artist depicts the unmistakable 3:1 herringbone weave pattern, the crossed hands with missing thumbs, and four distinct L-shaped burn holes matching the Shroud's ancient poker burn marks exactly.",
-    source: "National Széchényi Library, Budapest, Pray Codex (1192–1195)"
+      "The Hungarian Pray Codex, dated to about 1192–1195, contains an illustration of Christ's burial in which he is shown nude with crossed arms and apparently thumbless hands, and the burial cloth carries a pattern of small L-shaped marks. Proponents read these as reflecting the Shroud's hand position, poker-hole burns and twill weave, which would place the cloth before the 1260–1390 radiocarbon range. Other historians see ordinary Byzantine and medieval iconographic conventions.",
+    contestedNote: "Historian Andrea Nicolotti attributes the similarities to common artistic conventions and notes that the illustrated cloth shows no body image; the supposed burn holes resemble decorative elements elsewhere in the manuscript.",
+    source: "National Széchényi Library, Budapest, Pray Codex (1192–1195)",
+    sourceUrl: "https://shroud.com/pdfs/n84part4.pdf",
+    sourceLabel: "Read Pray Codex Analysis",
+    relatedLinks: [{ label: "Wikipedia: Pray Codex", url: "https://en.wikipedia.org/wiki/Pray_Codex" }, { label: "Casabianca (2021), Heythrop Journal", url: "https://philpapers.org/archive/CASTOH-2.pdf" }]
   },
   {
-    num: 25,
+    num: 29,
     title: "Fourth Crusade (1204 AD) & Geoffroi de Charny in Lirey",
     categoryGroup: "Historical Custody & The Mandylion",
     categoryLabel: "European Provenance",
@@ -316,12 +427,14 @@ export const evidenceList: EvidencePoint[] = [
     summary: "Robert de Clari documented the Shroud in Constantinople in 1204 before French Crusaders safeguarded it until its public display in Lirey.",
     detail:
       "In 1204 AD, French chronicler Robert de Clari recorded seeing the Shroud displayed every Friday at the Blachernae church in Constantinople. Following the Fourth Crusade, the relic was safeguarded by French nobility until knight Geoffroi de Charny officially displayed it in Lirey, France, in 1354, establishing its continuous, unbroken European registry.",
-    source: "Robert de Clari, La Conquête de Constantinople (1204) & House of Savoy"
+    contestedNote: "The documented chain has a gap between 1204 and the 1350s, and a memorandum by Bishop Pierre d'Arcis claimed the Lirey cloth had been painted.",
+    source: "Robert de Clari, La Conquête de Constantinople (1204) & House of Savoy",
+    sourceUrl: "https://en.wikipedia.org/wiki/History_of_the_Shroud_of_Turin",
+    sourceLabel: "Read Provenance Overview"
   },
-
-  // SECTION 6: BIBLICAL HARMONY & RESURRECTION REALITY
+  // SECTION: BIBLICAL HARMONY & RESURRECTION REALITY
   {
-    num: 26,
+    num: 30,
     title: "Gospel Harmony: The Passion & Crown of Thorns",
     categoryGroup: "Gospel Harmony & The Resurrection",
     categoryLabel: "Scriptural Correspondence",
@@ -333,7 +446,7 @@ export const evidenceList: EvidencePoint[] = [
     source: "Gospel Narratives & Comparative Forensic Pathology"
   },
   {
-    num: 27,
+    num: 31,
     title: "Gospel Harmony: Joseph of Arimathea's Fine Linen",
     categoryGroup: "Gospel Harmony & The Resurrection",
     categoryLabel: "Scriptural Correspondence",
@@ -345,7 +458,7 @@ export const evidenceList: EvidencePoint[] = [
     source: "New Testament Hermeneutics & Biblical Archaeology"
   },
   {
-    num: 28,
+    num: 32,
     title: "Saint John's Eyewitness Testimony at the Empty Tomb",
     categoryGroup: "Gospel Harmony & The Resurrection",
     categoryLabel: "Scriptural Correspondence",
@@ -357,7 +470,7 @@ export const evidenceList: EvidencePoint[] = [
     source: "Apostolic Eyewitness Testimony & Patristic Exegesis"
   },
   {
-    num: 29,
+    num: 33,
     title: "The Unbroken Cumulative Verdict: A Physical Miracle",
     categoryGroup: "Gospel Harmony & The Resurrection",
     categoryLabel: "Cumulative Apologetics",
@@ -370,20 +483,22 @@ export const evidenceList: EvidencePoint[] = [
 ];
 
 // High-level thematic categories for the top navigation tabs
+const countFor = (id: string) =>
+  id === "All" ? evidenceList.length : evidenceList.filter((p) => p.categoryGroup === id).length;
+
 export const NAVIGATION_CATEGORIES = [
-  { id: "All", label: "All Evidence", icon: "✨", count: 29 },
-  { id: "Optics & Physical Properties", label: "Optics & 3D Topography", icon: "📐", count: 5 },
-  { id: "Blood & Forensic Pathology", label: "Forensics & Blood Chemistry", icon: "🩸", count: 8 },
-  { id: "Modern Laser Physics & Dating", label: "Laser Physics & Dating", icon: "⚡", count: 4 },
-  { id: "Genomics & Archaeology", label: "Genomics & Botany", icon: "🌿", count: 4 },
-  { id: "Historical Custody & The Mandylion", label: "History & The Mandylion", icon: "📜", count: 4 },
-  { id: "Gospel Harmony & The Resurrection", label: "Gospel Harmony & Miracle", icon: "✝️", count: 4 }
+  { id: "All", label: "All Evidence", icon: "✨", count: countFor("All") },
+  { id: "Optics & Physical Properties", label: "Optics & 3D Topography", icon: "📐", count: countFor("Optics & Physical Properties") },
+  { id: "Blood & Forensic Pathology", label: "Forensics & Blood Chemistry", icon: "🩸", count: countFor("Blood & Forensic Pathology") },
+  { id: "Modern Laser Physics & Dating", label: "Laser Physics & Dating", icon: "⚡", count: countFor("Modern Laser Physics & Dating") },
+  { id: "Genomics & Archaeology", label: "Genomics & Botany", icon: "🌿", count: countFor("Genomics & Archaeology") },
+  { id: "Historical Custody & The Mandylion", label: "History & The Mandylion", icon: "📜", count: countFor("Historical Custody & The Mandylion") },
+  { id: "Gospel Harmony & The Resurrection", label: "Gospel Harmony & Miracle", icon: "✝️", count: countFor("Gospel Harmony & The Resurrection") },
 ];
 
 export default function Index() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [activeModalPoint, setActiveModalPoint] = useState<EvidencePoint | null>(null);
 
   const filteredPoints = evidenceList.filter((pt) => {
     const matchesCategory =
@@ -409,6 +524,12 @@ export default function Index() {
       </div>
 
       {/* BEAUTIFUL HEADER */}
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-xl focus:bg-[#291238] focus:text-white focus:text-sm focus:font-bold"
+            >
+              Skip to main content
+            </a>
             <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/85 border-b border-[#D1B3FB]/60 shadow-sm">
               {/* Subtle top accent line */}
               <div className="h-1 bg-gradient-to-r from-transparent via-[#7B1FA2]/40 to-transparent" />
@@ -421,9 +542,9 @@ export default function Index() {
                       ✝️
                     </div>
                     <div>
-                      <h1 className="font-black text-lg sm:text-xl tracking-tight text-[#291238] leading-none">
+                      <p className="font-black text-lg sm:text-xl tracking-tight text-[#291238] leading-none">
                         The Shroud of Turin
-                      </h1>
+                      </p>
                       <p className="text-[11px] font-medium text-[#6B3D84] tracking-wider uppercase mt-0.5">
                         Empirical Evidence Compendium
                       </p>
@@ -468,7 +589,7 @@ export default function Index() {
               </div>
             </header>
 
-      <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-8 pb-20">
+      <main id="main" className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-8 pb-20">
         {/* COMMANDING, PROFESSIONAL & BEAUTIFULLY POLISHED HERO SECTION */}
                 <section className="text-center pt-4 pb-12">
                   {/* Reverent Overline Badge */}
@@ -482,7 +603,7 @@ export default function Index() {
                   </div>
         
                   {/* Majestic Hero Headline */}
-                  <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-[#291238] tracking-tight leading-[1.12] mb-6 animate-slide-up hero-element-2 group cursor-default hover:scale-102 transition-transform duration-300 ease-out">
+                  <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-[#291238] tracking-tight leading-[1.12] mb-6 animate-slide-up hero-element-2 group cursor-default hover:scale-[1.02] transition-transform duration-300 ease-out">
                     The Silent Witness to the{" "}
                     <span className="relative inline-block">
                       <span className="relative z-10 bg-gradient-to-r from-[#4A154B] via-[#7B1FA2] to-[#A0162B] bg-clip-text text-transparent">
@@ -497,7 +618,7 @@ export default function Index() {
         
                   {/* Polished Subtitle Text */}
                   <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-[#4A2460] leading-relaxed mb-8 font-normal animate-slide-up hero-element-3">
-                    A comprehensive, rigorous synthesis of 30+ peer-reviewed scientific studies, NASA 3D
+                    A comprehensive, rigorous synthesis of {evidenceList.length} lines of evidence drawn from published scientific studies, NASA 3D
                     spatial depth analyses, human hemoglobin serology, sub-micron vacuum ultraviolet
                     physics, and unbroken historical custody documenting the authentic burial cloth of Our
                     Lord Jesus Christ.
@@ -505,22 +626,22 @@ export default function Index() {
         
                   {/* Quick Metrics Bar to Show the Miracle at a Glance */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto mb-8 text-left animate-slide-up hero-element-4">
-                    <div className="group p-4 rounded-2xl bg-white/90 border border-[#D1B3FB] shadow-2xs hover:shadow-2xl hover:-translate-y-2 hover:scale-105 transition-all duration-300 ease-out cursor-pointer hover:ring-2 hover:ring-[#7B1FA2]/20">
+                    <div className="group p-4 rounded-2xl bg-white/90 border border-[#D1B3FB] shadow-2xs hover:shadow-2xl hover:-translate-y-2 hover:scale-105 transition-all duration-300 ease-out hover:ring-2 hover:ring-[#7B1FA2]/20">
                                           <div className="text-[11px] font-bold text-[#6B3D84] uppercase tracking-wider group-hover:text-[#7B1FA2] transition-colors">Image Depth</div>
                       <div className="text-lg sm:text-xl font-black text-[#291238] group-hover:text-[#651576] transition-colors">0.2 Microns</div>
                       <div className="text-[10px] text-[#6B3D84] group-hover:text-[#5C2D6A] transition-colors">Primary fibril cell wall only</div>
                     </div>
-                    <div className="group p-4 rounded-2xl bg-white/90 border border-[#D1B3FB] shadow-2xs hover:shadow-2xl hover:-translate-y-2 hover:scale-105 transition-all duration-300 ease-out cursor-pointer hover:ring-2 hover:ring-[#7B1FA2]/20">
+                    <div className="group p-4 rounded-2xl bg-white/90 border border-[#D1B3FB] shadow-2xs hover:shadow-2xl hover:-translate-y-2 hover:scale-105 transition-all duration-300 ease-out hover:ring-2 hover:ring-[#7B1FA2]/20">
                                           <div className="text-[11px] font-bold text-[#6B3D84] uppercase tracking-wider group-hover:text-[#7B1FA2] transition-colors">Blood Analysis</div>
                       <div className="text-lg sm:text-xl font-black text-[#851627] group-hover:text-[#a01e2a] transition-colors">Type AB Human</div>
                       <div className="text-[10px] text-[#6B3D84] group-hover:text-[#5C2D6A] transition-colors">Traumatic high-bilirubin clots</div>
                     </div>
-                    <div className="group p-4 rounded-2xl bg-white/90 border border-[#D1B3FB] shadow-2xs hover:shadow-2xl hover:-translate-y-2 hover:scale-105 transition-all duration-300 ease-out cursor-pointer hover:ring-2 hover:ring-[#7B1FA2]/20">
+                    <div className="group p-4 rounded-2xl bg-white/90 border border-[#D1B3FB] shadow-2xs hover:shadow-2xl hover:-translate-y-2 hover:scale-105 transition-all duration-300 ease-out hover:ring-2 hover:ring-[#7B1FA2]/20">
                                           <div className="text-[11px] font-bold text-[#6B3D84] uppercase tracking-wider group-hover:text-[#7B1FA2] transition-colors">X-Ray Crystallography</div>
                       <div className="text-lg sm:text-xl font-black text-[#291238] group-hover:text-[#651576] transition-colors">~2,000 Years</div>
-                      <div className="text-[10px] text-[#6B3D84] group-hover:text-[#5C2D6A] transition-colors">2022 WAXS De Caro Study</div>
+                      <div className="text-[10px] text-[#6B3D84] group-hover:text-[#5C2D6A] transition-colors">2022 WAXS study (one thread)</div>
                     </div>
-                    <div className="group p-4 rounded-2xl bg-white/90 border border-[#D1B3FB] shadow-2xs hover:shadow-2xl hover:-translate-y-2 hover:scale-105 transition-all duration-300 ease-out cursor-pointer hover:ring-2 hover:ring-[#7B1FA2]/20">
+                    <div className="group p-4 rounded-2xl bg-white/90 border border-[#D1B3FB] shadow-2xs hover:shadow-2xl hover:-translate-y-2 hover:scale-105 transition-all duration-300 ease-out hover:ring-2 hover:ring-[#7B1FA2]/20">
                                           <div className="text-[11px] font-bold text-[#6B3D84] uppercase tracking-wider group-hover:text-[#7B1FA2] transition-colors">Radiant Burst</div>
                       <div className="text-lg sm:text-xl font-black text-[#5C1E70] group-hover:text-[#7B1FA2] transition-colors">34 Trillion W</div>
                       <div className="text-[10px] text-[#6B3D84] group-hover:text-[#5C2D6A] transition-colors">ENEA Vacuum UV Laser Physics</div>
@@ -528,7 +649,7 @@ export default function Index() {
                   </div>
         
                   {/* Elegant Scripture Testimony Card */}
-                  <div className="max-w-2xl mx-auto p-6 rounded-3xl bg-white/95 border-2 border-[#D1B3FB] shadow-sm text-center relative overflow-hidden hover:shadow-2xl hover:-translate-y-2 hover:scale-102 transition-all duration-300 ease-out animate-slide-up hero-element-5 hover:ring-2 hover:ring-[#7B1FA2]/20">
+                  <div className="max-w-2xl mx-auto p-6 rounded-3xl bg-white/95 border-2 border-[#D1B3FB] shadow-sm text-center relative overflow-hidden hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 ease-out animate-slide-up hero-element-5 hover:ring-2 hover:ring-[#7B1FA2]/20">
                     <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#7B1FA2] via-[#E8D7FE] to-[#A0162B]" />
                     <p className="italic font-serif text-[#331135] text-base sm:text-lg leading-relaxed mb-2">
                       "Simon Peter arrived and went inside the tomb. He saw the linen wrappings lying there,
@@ -541,19 +662,37 @@ export default function Index() {
                   </div>
                 </section>
 
+                {/* HOW TO READ THIS PAGE */}
+                <div className="mb-8 p-4 rounded-2xl bg-white/90 border border-[#D1B3FB] text-xs sm:text-sm text-[#4A2460] leading-relaxed">
+                  <span className="font-black text-[#291238]">How to read this page: </span>
+                  Each entry links to the original paper or a primary source where one is available. Where researchers
+                  dispute a finding, the card includes a &ldquo;Scholarly context&rdquo; note. The 1988 radiocarbon
+                  dating (1260&ndash;1390 AD, published in{" "}
+                  <a
+                    href="https://www.nature.com/articles/337611a0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2 hover:text-[#291238]"
+                  >
+                    Nature, 1989
+                  </a>
+                  ) remains the most widely cited scientific date, and several entries discuss challenges to it.
+                </div>
+
         {/* SEARCH & DETAILED FILTER CONTROLS */}
                 <section className="mb-8 p-4 sm:p-5 rounded-3xl bg-white/95 border border-[#D1B3FB] shadow-xs hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ease-out">
                   <div className="flex flex-col sm:flex-row items-center gap-3 justify-between">
                     {/* Search Input */}
                     <div className="w-full sm:w-80 relative group">
                       <input
-                        type="text"
+                        type="search"
+                        aria-label="Search the evidence"
                         placeholder="Search across all evidence, forensics, sources..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         className="w-full px-4 py-2.5 pl-10 rounded-2xl bg-[#F8F2FE] border border-[#D1B3FB] text-sm text-[#291238] placeholder-[#79508F] focus:outline-none focus:ring-2 focus:ring-[#7B1FA2]/40 focus:border-[#7B1FA2] transition-all"
                       />
-                      <span className="absolute left-3.5 top-3 text-sm text-[#79508F] group-focus-within:text-[#7B1FA2] transition-colors">🔍</span>
+                      <span aria-hidden="true" className="absolute left-3.5 top-3 text-sm text-[#79508F] group-focus-within:text-[#7B1FA2] transition-colors">🔍</span>
                     </div>
         
                     {/* Evidence Count Pill */}
@@ -613,6 +752,15 @@ export default function Index() {
                         {item.detail}
                       </p>
         
+                      {item.contestedNote && (
+                        <div className="mb-3 pl-0 sm:pl-11">
+                          <div className="text-xs leading-relaxed text-[#5A3A00] bg-[#FFF8E6] border border-[#F0DCA0] rounded-xl p-2.5">
+                            <span className="font-black">Scholarly context: </span>
+                            {item.contestedNote}
+                          </div>
+                        </div>
+                      )}
+
                       {/* Scripture Link if present */}
                       {item.scripture && (
                         <div className="mb-3 pl-0 sm:pl-11 flex items-center gap-2 text-xs font-bold text-[#7B1FA2] bg-[#FAF5FE] p-2.5 rounded-xl border border-[#E8D7FE] inline-flex group-hover:bg-[#E8D7FE] transition-colors">
@@ -631,11 +779,27 @@ export default function Index() {
                             rel="noopener noreferrer"
                             className="font-bold text-[#651576] hover:underline flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#F8F2FE] border border-[#D1B3FB] group-hover:bg-[#291238] group-hover:text-white group-hover:border-[#291238] transition-all duration-300"
                           >
-                            <span>Read Original Study</span>
+                            <span>{item.sourceLabel ?? "Read Original Study"}</span>
                             <span className="transition-transform group-hover:translate-x-0.5">↗</span>
                           </a>
                         )}
                       </div>
+                    {item.relatedLinks && item.relatedLinks.length > 0 && (
+                        <div className="mt-2 pl-0 sm:pl-11 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#6B3D84]">
+                          <span className="font-bold">Related:</span>
+                          {item.relatedLinks.map((l) => (
+                            <a
+                              key={l.url}
+                              href={l.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="underline underline-offset-2 hover:text-[#291238]"
+                            >
+                              {l.label} ↗
+                            </a>
+                          ))}
+                        </div>
+                      )}
                     </article>
                   ))}
 

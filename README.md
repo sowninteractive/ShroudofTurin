@@ -1,12 +1,13 @@
 # The Shroud of Turin — Empirical Evidence Compendium
 
-A comprehensive, rigorous synthesis of scientific evidence documenting the authentic burial cloth of Jesus Christ. This website presents 29 peer-reviewed studies spanning optics, forensic pathology, laser physics, genomics, archaeology, and historical custody.
+A compendium of 33 lines of evidence drawn from published scientific studies and historical sources, spanning optics, forensic pathology, laser physics, genomics, archaeology, and historical custody.
 
 ## Features
 
-- **29 Evidence Points** organized into 6 thematic categories
+- **33 Evidence Points** organized into 6 thematic categories
 - **Search & Filter** across all evidence, forensics, sources, and scripture
-- **Source Attribution** links to original scholarly papers
+- **Source Attribution** links to original papers or primary sources, plus related studies on each card
+- **Scholarly Context notes** on contested findings, including challenges to and defenses of the 1988 radiocarbon dating
 - **Scripture References** integrated throughout
 - **Responsive Design** working on mobile, tablet, and desktop
 - **Sophisticated Hover States** with refined micro-interactions
@@ -16,27 +17,27 @@ A comprehensive, rigorous synthesis of scientific evidence documenting the authe
 - React 19 + TypeScript
 - Vite build tool
 - Tailwind CSS
-- React Router
+- React Router (hash routing for static hosting)
 - Radix UI components (shadcn/ui)
 
 ## Getting Started
 
 ```bash
-npm install
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run preview  # Preview production build locally
+pnpm install
+pnpm dev        # Start development server
+pnpm build      # Build for production (outputs to dist/)
+pnpm preview    # Preview the production build locally
 ```
 
-## Deployment
+## Deployment (GitHub Pages)
 
-This project is configured for GitHub Pages deployment via GitHub Actions. Simply push to the `main` branch and the workflow will automatically:
+1. Push this project to a GitHub repository's `main` branch.
+2. In the repo, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
+3. The workflow in `.github/workflows/deploy.yml` builds and deploys automatically on every push to `main`.
 
-1. Install dependencies
-2. Build the production bundle
-3. Deploy to GitHub Pages
+The site will be live at `https://<username>.github.io/<repo-name>/`.
 
-Your site will be live at `https://yourusername.github.io/your-repo-name/`
+The build uses relative asset paths and hash-based routing, so it works under any repository name or a custom domain without extra configuration.
 
 ## License
 
