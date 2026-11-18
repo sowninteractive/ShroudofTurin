@@ -119,12 +119,6 @@ export default function Index() {
             >
               Explore the Evidence ↓
             </a>
-            <a
-              href="#how-to-read"
-              className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-white/90 border border-[#D1B3FB] text-[#291238] text-sm font-bold hover:bg-white hover:border-[#7B1FA2]/40 transition-colors"
-            >
-              How to read this page
-            </a>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto text-left animate-slide-up hero-element-4">
@@ -152,26 +146,6 @@ export default function Index() {
             </figcaption>
           </figure>
         </section>
-
-        {/* HOW TO READ THIS PAGE */}
-        <div
-          id="how-to-read"
-          className="scroll-mt-20 mb-8 p-4 rounded-2xl bg-white/90 border border-[#D1B3FB] text-xs sm:text-sm text-[#4A2460] leading-relaxed"
-        >
-          <span className="font-black text-[#291238]">How to read this page: </span>
-          Each entry links to the original paper or a primary source where one is available. Where researchers dispute a
-          finding, the card includes a &ldquo;Scholarly context&rdquo; note. The 1988 radiocarbon dating
-          (1260&ndash;1390 AD, published in{" "}
-          <a
-            href="https://www.nature.com/articles/337611a0"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-2 hover:text-[#291238]"
-          >
-            Nature, 1989
-          </a>
-          ) remains the most widely cited scientific date, and several entries discuss challenges to it.
-        </div>
 
         {/* CATEGORY TABS, SEARCH & RESULT COUNT */}
         <section id="evidence" className="scroll-mt-20 mb-8 p-4 sm:p-5 rounded-3xl bg-white/95 border border-[#D1B3FB] shadow-sm">
@@ -281,15 +255,6 @@ export default function Index() {
                         {item.detail}
                       </p>
         
-                      {item.contestedNote && (
-                        <div className="mb-3 pl-0 sm:pl-11">
-                          <div className="text-xs leading-relaxed text-[#5A3A00] bg-[#FFF8E6] border border-[#F0DCA0] rounded-xl p-2.5">
-                            <span className="font-black">Scholarly context: </span>
-                            {item.contestedNote}
-                          </div>
-                        </div>
-                      )}
-
                       {/* Scripture Link if present */}
                       {item.scripture && (
                         <div className="mb-3 pl-0 sm:pl-11 flex items-center gap-2 text-xs font-bold text-[#7B1FA2] bg-[#FAF5FE] p-2.5 rounded-xl border border-[#E8D7FE] inline-flex group-hover:bg-[#E8D7FE] transition-colors">
